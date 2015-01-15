@@ -4,7 +4,6 @@
 	<meta charset="UTF-8">
 	<title>M:TG Visual Database</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.2/normalize.min.css">
 <style>
 	body{
 		margin: 0;
@@ -12,10 +11,12 @@
 
 	nav{
 		margin-bottom: 10px;
+		z-index:5;
 	}
 
 	img{
 		max-width: 285px;
+		border-radius:5px;
 	}
 
 	li{
@@ -31,25 +32,34 @@
 	}
 
 	.item{
-		transition: opacity .3s ease-in;;
+		transition: opacity .5s ease-in;
 		display: inline-block;
 		border: 1px gray solid;
 		border-radius:5px; 
 		max-width: 25%;
+		transform-style: preserve-3d;
+  		transition: transform .5s;
 	}
 
 	.item:hover{
-		opacity: 0.5;
+		transform: rotateY(180deg);
+		z-index: 2;
 	}
 
 	.item.w2{
 		width: 50%;
 	}
 
+
 	.cardDisplay{
-		padding-top: 10px;
+	padding-top: 10px;
 	}
 	
+	.container{
+	perspective:10x;
+	position: relative;
+	}
+
 	.scrollup {
 	text-align: center;
     width: 40px;
@@ -70,20 +80,49 @@
 	width: 100%;
 	background: white;
 	opacity: 1;
-	z-index: 2;
+	z-index: 3;
 	padding-bottom: 15px;
 	}
 
 	#nav-wrapper div{
 	margin-left: 75px;
+	z-index: 5;
 	}
 
+	
+	.card .front {
+	}
+
+	.back{
+	transform: scaleX(-1);
+	}
+	
+	.container{
+	position: relative;
+	}
+
+	.item figure {
+  	z-index:4;
+	}
+
+	.cardBacks{
+	transition: .5s;
+	opacity: 0;
+	margin-top: -403px;	
+	}	
+
+	.cardBacks:hover{
+	opacity:1;
+	transition: .5s ease-in;
+	}
 </style>
 </head>
 <body>
 	<div class="nav" id="nav-wrapper">
-		<div><h1>Magic: The Gathering Database </h1></div>
-		<div id="searchCards"><input type="text" placeholder="Search"></div>
+		<div>
+			<h1>Magic: The Gathering Database</h1>
+		</div>
+		<div id="searchCards"><input id="search" type="text" placeholder="Search"></div>
 	</div>
 	<div class="container">
 		<div class="cardDisplay">
